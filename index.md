@@ -8,7 +8,7 @@ permalink: /
 
 # Gradio Demo
 
-<!-- <iframe src="https://abidlabs-pytorch-image-classifier.hf.space"></iframe> -->
+<iframe src="https://abidlabs-pytorch-image-classifier.hf.space"></iframe>
 
 
 # Focus on writing good documentation
