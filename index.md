@@ -214,20 +214,7 @@ interaction module (LPI) consisting of two convolution layers. The
 attention mechanism used in this model is mathematically represented as
 
 
-#### Complexity for each efficient attention 
 
- A image of size H X W X M is first divided into smaller tokens of size $P$ X $P$ X $M$ where $P$ is the patch size and $M$ is the number of channels. The total number of tokens is $N = H * W / P^2$.
-
- These image patches are then projected to a dimension of $C$ using a linear projection. The complexity of each attention mechanism is given below:
-
-Model | Architecture Complexity
---- | ---
-Transformer (SA) | O(N^2C)
-Linformer (LA) | O(N^2C)
-Performer (PA) | O(NC^2)
-Fastformer (AA) | O(NC)
-XCiT (XCA) | O(NC^2)
-Swin Transformer (Swin) | O(NC^3)
 
 
 
@@ -236,6 +223,27 @@ Swin Transformer (Swin) | O(NC^3)
 $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{softmax}\left(\frac{\|\mathbf{q}\|_2^T\|\mathbf{k}\|_2}{\tau}\right) \mathbf{v}^T\right]^T$$
 
 <div class="tip" markdown="1">
+
+ #### Complexity for each efficient attention 
+  
+  </div>
+
+ A image of size H X W X M is first divided into smaller tokens of size $P$ X $P$ X $M$ where $P$ is the patch size and $M$ is the number of channels. The total number of tokens is $N = H * W / P^2$.
+
+ These image patches are then projected to a dimension of $C$ using a linear projection. The complexity of each attention mechanism is given below:
+
+<div class="tip" markdown="1">
+Model | Architecture Complexity
+--- | ---
+Transformer (SA) | O(N^2C)
+Linformer (LA) | O(N^2C)
+Performer (PA) | O(NC^2)
+Fastformer (AA) | O(NC)
+XCiT (XCA) | O(NC^2)
+Swin Transformer (Swin) | O(NC^3) 
+
+ 
+ 
 # Milestones
 
 1.  Oct 8, 2022 - Choose the medical image classification dataset and
