@@ -1,3 +1,9 @@
+---
+title: Home
+layout: home
+usemathjax: true
+---
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -10,11 +16,6 @@
 </head>
 <body>
 
----
-title: Home
-layout: home
-usemathjax: true
----
 
 
 
