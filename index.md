@@ -34,7 +34,7 @@ bibliography:
 date: November 2022
 title: CS639 Project Proposal
 ---
-
+<div class="tip" markdown="1">
 # Introduction
 
 Recently, deep learning models have shown remarkable performance in
@@ -167,6 +167,7 @@ based on the dot product of the query vector with the key vector for
 that vector.
 
 This can be written mathematically as:
+</div>
 
 $$x^2$$
     
@@ -174,7 +175,9 @@ $$x^2$$
 
 where $Q$ is the query matrix, $K$ is the key matrix, $V$ is the value
 matrix, and $d_k$ is the dimension of the keys.
-
+  
+  
+<div class="tip" markdown="1">
 ## Efficient Transformers
 
 #### Linformer
@@ -188,12 +191,15 @@ model to avoid the self-attention bottleneck. The original scaled
 dot-product attention is decomposed into multiple smaller attentions
 through linear projections. This combination of operations forms a
 low-rank factorization of the original attention.
+ 
+</div>
 
 $$\operatorname{LA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\operatorname{softmax}\left(\frac{\mathbf{q}\left[W_{\text {proj }} \mathbf{k}\right]^T}{\sqrt{d_k}}\right) W_{\text {proj }} \mathbf{v}$$
 
 Here, $q$ is the query vector, $k$ is the key vector and $W_{proj}$ is
 the projection matrix for the smaller self-attention spans.
 
+<div class="tip" markdown="1"> 
 #### XCIT
 
 [@xcit]
@@ -207,8 +213,11 @@ representations learned. To overcome this, XCiT introduced a local patch
 interaction module (LPI) consisting of two convolution layers. The
 attention mechanism used in this model is mathematically represented as
 
+ </div> 
+
 $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{softmax}\left(\frac{\|\mathbf{q}\|_2^T\|\mathbf{k}\|_2}{\tau}\right) \mathbf{v}^T\right]^T$$
 
+<div class="tip" markdown="1">
 # Milestones
 
 1.  Oct 8, 2022 - Choose the medical image classification dataset and
@@ -271,7 +280,7 @@ attention mechanisms - Performer[@performer],
 Fastformer[@wu2021fastformer], and Swin Transformer[@liu2021swin].****
  
  
- 
+ </div>
  
 </body>
 </html>
