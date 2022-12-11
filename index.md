@@ -17,7 +17,7 @@ usemathjax: true
 <body>
 
 
-
+<div class="tip" markdown="1">
 
 # Gradio Demo
 
@@ -34,7 +34,7 @@ bibliography:
 date: November 2022
 title: CS639 Project Proposal
 ---
-<div class="tip" markdown="1">
+
 # Introduction
 
 Recently, deep learning models have shown remarkable performance in
