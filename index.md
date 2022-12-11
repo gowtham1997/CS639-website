@@ -213,6 +213,24 @@ representations learned. To overcome this, XCiT introduced a local patch
 interaction module (LPI) consisting of two convolution layers. The
 attention mechanism used in this model is mathematically represented as
 
+
+#### Complexity for each efficient attention 
+
+ A image of size H X W X M is first divided into smaller tokens of size $P$ X $P$ X $M$ where $P$ is the patch size and $M$ is the number of channels. The total number of tokens is $N = H * W / P^2$.
+
+ These image patches are then projected to a dimension of $C$ using a linear projection. The complexity of each attention mechanism is given below:
+
+Model | Architecture Complexity
+--- | ---
+Transformer (SA) | O(N^2C)
+Linformer (LA) | O(N^2C)
+Performer (PA) | O(NC^2)
+Fastformer (AA) | O(NC)
+XCiT (XCA) | O(NC^2)
+Swin Transformer (Swin) | O(NC^3)
+
+
+
  </div> 
 
 $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{softmax}\left(\frac{\|\mathbf{q}\|_2^T\|\mathbf{k}\|_2}{\tau}\right) \mathbf{v}^T\right]^T$$
@@ -272,6 +290,19 @@ Hence we see the efficient attention come close to and sometimes exceed
 the performance of the baseline ResNet and VIT models. Thus, future
 avenues exist to leverage efficient attention models to reduce
 computation.
+
+## Benchmarking the FLOPS and Inference Latency
+
+| Model Config       	| Intel Xeon(s) 	| Nvidia RTX 2060 Ti(s) 	| Nvidia A100(s) 	| FLOPS (Giga)    	| Parameters (M) 	|
+|--------------------	|------------	|--------------------	|------------	|---------------	|----------------	|
+| Linformer          	|     7.13    	|         0.18        	|    0.09    	|     1.56      	|   28.56       	|
+| Performer          	|     6.249    	|         0.16         	|    0.07    	|     1.47      	|   28.28       	|
+| Swin transformer   	|     6.86   	|         0.18        	|    0.086   	|     1.50      	|   28.28       	|
+| Resnet50           	|     8.63    	|         0.2         	|    0.12     	|     4.00      	|   25.6        	|
+| Vision Transformer 	|     8.904    	|         0.26        	|    0.13    	|     1.91      	|   28.27       	|
+| Fastformer         	|     4.589    	|         0.14         	|    0.05     	|     1.45      	|   28.28       	|
+| XCIT               	|     6.452    	|         0.17         	|    0.07     	|     1.47      	|   28.28       	|
+
 
 For the final project, we plan to benchmark these models' flops and
 inference times across various hardware to show performance vs.
