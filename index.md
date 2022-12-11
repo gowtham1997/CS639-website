@@ -23,10 +23,7 @@ bibliography: ref.bib
 
 <div class="tip" markdown="1">
 
-# Gradio Demo
 
- <iframe src="https://abidlabs-pytorch-image-classifier.hf.space" width="800" height="600"></iframe>
- 
  
 # Introduction
 
@@ -287,3 +284,7 @@ Fastformer[@wu2021fastformer], and Swin Transformer[@liu2021swin].****
  
 </body>
 </html>
+
+# Gradio Demo
+<iframe src="https://abidlabs-pytorch-image-classifier.hf.space" width="800" height="600"></iframe>
+ 
