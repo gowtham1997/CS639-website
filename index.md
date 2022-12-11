@@ -2,6 +2,7 @@
 title: Home
 layout: home
 usemathjax: true
+bibliography: ref.bib
 ---
 
 <html>
