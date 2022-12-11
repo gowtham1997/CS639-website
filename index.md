@@ -1,9 +1,11 @@
 ---
-title: Home
+title: CS639 Project Website
 layout: home
 usemathjax: true
 bibliography: ref.bib
 ---
+
+[@wang2020linformer; @wu2021fastformer; @liu2021swin; @choromanski2021rethinking]
 
 <html>
 <head>
@@ -33,7 +35,7 @@ author:
 bibliography:
 - ref.bib
 date: November 2022
-title: CS639 Project Proposal
+title: 
 ---
 
 # Introduction
@@ -216,9 +218,6 @@ attention mechanism used in this model is mathematically represented as
 
 
 
-
-
-
  </div> 
 
 $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{softmax}\left(\frac{\|\mathbf{q}\|_2^T\|\mathbf{k}\|_2}{\tau}\right) \mathbf{v}^T\right]^T$$
@@ -244,33 +243,7 @@ XCiT (XCA) | O(NC^2)
 Swin Transformer (Swin) | O(NC^3) 
 
  
- 
-# Milestones
 
-1.  Oct 8, 2022 - Choose the medical image classification dataset and
-    the right evaluation metric to use for our experiments *Completed*
-
-2.  Oct 8, 2022 - Decide on the baseline CNN model, the full
-    self-attention ViT model and the variants of efficient attention
-    models we would like to test. *Completed*
-
-3.  Oct 22, 2022 - Code and train the baseline CNN and ViT model.
-    *Completed*
-
-4.  Nov 10, 2022 - Code and train at least one variant of the efficient
-    attention model. Submit the mid-term project report. *Completed*
-
-5.  Nov 15, 2022 - Code and train any remaining models. *In progress*
-
-6.  Nov 20, 2022 - Benchmark the performance of various architectures
-    considered on a CPU and GPU machine and analyze the trade-off
-    between performance and efficiency.
-
-7.  Nov 30, 2022 - Visualize attention maps to compare how the attention
-    mechanisms differ
-
-8.  Dec 1 - Dec 15, 2022 - Report writing, getting the website ready and
-    submission
 
 # Results
 
