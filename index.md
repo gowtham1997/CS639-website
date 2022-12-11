@@ -5,8 +5,6 @@ usemathjax: true
 bibliography: ref.bib
 ---
 
-[@wang2020linformer; @wu2021fastformer; @liu2021swin; @choromanski2021rethinking]
-
 <html>
 <head>
   <meta charset="utf-8">
@@ -24,20 +22,9 @@ bibliography: ref.bib
 
 # Gradio Demo
 
- <iframe src="https://abidlabs-pytorch-image-classifier.hf.space"></iframe>
+ <iframe src="https://abidlabs-pytorch-image-classifier.hf.space" width="800" height="600"></iframe>
  
  
----
-author:
-- |
-  Gowtham Ramesh, Kriti Goyal and Makesh Sreedhar\
-  {gramesh4, kgoyal6, msreedhar}@wisc.edu
-bibliography:
-- ref.bib
-date: November 2022
-title: 
----
-
 # Introduction
 
 Recently, deep learning models have shown remarkable performance in
