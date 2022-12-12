@@ -300,7 +300,7 @@ The computation complexity of this attention mechanism is O(NCr), where r is the
   
 Model | Architecture Complexity
 --- | ---
-Transformer (SA) | O(N^2C)
+Transformer (SA) | O($N^2C$)
 Linformer (LA) | O(N^2C)
 Performer (PA) | O(NC^2)
 Fastformer (AA) | O(NC)
