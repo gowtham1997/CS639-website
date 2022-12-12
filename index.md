@@ -85,22 +85,18 @@ it a challenging benchmark to baseline our models. Table
 [1](#brain-mri){reference-type="ref" reference="brain-mri"} shows the
 class distribution of this dataset.
 
-::: {#brain-mri}
-  *Diagnosis*           *Count*
-  ----------------------- -----------
-  Acute infarct           513
-  Arteriovenous anomaly   272
-  Chronic infarct         2307
-  Edema                   125
-  Extra                   1259
-  Focal flair hyper       751
-  Intra                   1721
-  Normal                  27374
-  Pituatary lesion        83
-  White matter changes    10266
-
-  : Label Distribution of the Brain MRI dataset
-:::
+Label | Count
+--- | ---
+Acute infarct | 513
+Arteriovenous anomaly | 272
+Chronic infarct | 2307
+Edema | 125
+Extra | 1259
+Focal flair hyper | 751
+Intra | 1721
+Normal | 27374
+Pituatary lesion | 83
+White matter changes | 10266
 
 ![Sample MRI images showing brain injuries. The bright white regions in
 the second scan indicate a type of Intracranial
