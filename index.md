@@ -249,10 +249,8 @@ Swin Transformer (Swin) | O(NC^3)
 # Results
 
 ![Top-1 Accuracy of the models on the dev
-set](images/top_1_accuracy.pdf){#fig:top1}
+set](images/top_1_accuracy.png){#fig:top1}
 
-![Top-5 Accuracy of the models on the dev
-set](images/top_5_accuracy.pdf){#fig:top5}
 
 For all of the models we have included as part of this report, we adjust
 the model configuration (number of layers, feed-forward units, etc.) to
@@ -264,10 +262,6 @@ Fig [2](#fig:top1){reference-type="ref" reference="fig:top1"} shows the
 top-1 accuracy of the various models. We see the performance order from
 best to worst as linformer $>$ resnet50 $>$ ViT-tiny $>$ ViT-small $>$
 xcit.
-
-Fig [3](#fig:top5){reference-type="ref" reference="fig:top5"} shows the
-top-5 accuracy of the various models.We find the performance order as
-linformer $>$ ViT-tiny $>=$ ViT-small $>$ resnet50 $>$ xcit-tiny.
 
 Hence we see the efficient attention come close to and sometimes exceed
 the performance of the baseline ResNet and VIT models. Thus, future
