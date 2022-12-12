@@ -85,6 +85,10 @@ it a challenging benchmark to baseline our models. Table
 [1](#brain-mri){reference-type="ref" reference="brain-mri"} shows the
 class distribution of this dataset.
 
+</div>
+  
+<div class="tip" markdown="1">
+
 Label | Count
 --- | ---
 Acute infarct | 513
@@ -98,6 +102,10 @@ Normal | 27374
 Pituatary lesion | 83
 White matter changes | 10266
 
+  
+</div>
+
+<div class="tip" markdown="1">
 ![Sample MRI images showing brain injuries. The bright white regions in
 the second scan indicate a type of Intracranial
 Hemorrhage.](images/brain_bleeds_mri.png){#fig:brain-bleed width="100%"}
