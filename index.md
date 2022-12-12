@@ -82,7 +82,7 @@ arteriovenous anomaly, white matter changes, etc. and scans of normal
 brains. The dataset contains 10 classes - 9 types of brain injuries/
 anomalies and normal brain scans. The dataset is also imbalanced, making
 it a challenging benchmark to baseline our models. Table
-[1](#brain-mri){reference-type="ref" reference="brain-mri"} shows the
+[1](#brain-mri) shows the
 class distribution of this dataset.
 
 </div>
@@ -116,6 +116,7 @@ White matter changes | 10266
 * Pituatary lesion: A pituitary lesion is a type of brain injury that affects the pituitary gland, which is a small gland located at the base of the brain. Pituitary lesions can interfere with the gland's ability to produce hormones, which can lead to a wide range of health problems. The model would try to look for abnormalities around the pituitary gland.
 * White matter changes: White matter changes refer to changes in the white matter of the brain, which is made up of nerve fibers that carry signals between different areas of the brain. The model can be trained to look for changes in the size, shape, or density of the nerve fibers that make up the white matter.
 
+![Brain Injuries](images/brain_injuries.png){#fig:brain_injuries}
   
 </div>
 
@@ -204,7 +205,7 @@ Here, $q$ is the query vector, $k$ is the key vector and $W_{proj}$ is
 the projection matrix for the smaller self-attention spans.
 
 <div class="tip" markdown="1"> 
-#### XCIT
+### XCIT
 
 [@xcit]
 
@@ -225,9 +226,8 @@ $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{sof
 
 <div class="tip" markdown="1">
 
- ### Complexity for each efficient attention 
-  
-  </div>
+ ### Complexity for Efficient Attention mechanisms
+ </div>
 
  A image of size H X W X M is first divided into smaller tokens of size $P$ X $P$ X $M$ where $P$ is the patch size and $M$ is the number of channels. The total number of tokens is $N = H * W / P^2$.
 
@@ -259,7 +259,7 @@ approximately 25M parameters. This allows us to conduct a fair
 comparison of the models by changing the attention mechanisms while
 keeping all other factors the same.
 
-Fig [2](#fig:top1){reference-type="ref" reference="fig:top1"} shows the
+Fig [2](#fig:top1) shows the
 top-1 accuracy of the various models. We see the performance order from
 best to worst as linformer $>$ resnet50 $>$ ViT-tiny $>$ ViT-small $>$
 xcit.
