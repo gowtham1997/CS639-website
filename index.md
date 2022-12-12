@@ -129,9 +129,7 @@ latencies on different hardware.
 
 # Models
 
-## CNN Baseline
-
-#### Resnet-50
+### Resnet-50 (CNN Baseline)
 
 ResNet-50[@he2015deep] is a deep convolutional neural network trained on
 more than a million images from the ImageNet database. The network is 50
@@ -142,7 +140,7 @@ between layers. Residual connections help the model learn the identity
 function and enable multiple layers to be stacked, allowing us to create
 much deeper models.
 
-## Vision Transformer
+### Vision Transformer
 
 The ViT model uses a Transformer-like architecture to classify images.
 An image is split into fixed-size patches, each patch is embedded,
@@ -158,9 +156,7 @@ that vector.
 
 This can be written mathematically as:
 </div>
-
-$$x^2$$
-    
+ 
 <span> $$\mathrm{Attention}(Q, K, V) = \mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$ </span>
 
 where $Q$ is the query matrix, $K$ is the key matrix, $V$ is the value
@@ -170,7 +166,7 @@ matrix, and $d_k$ is the dimension of the keys.
 <div class="tip" markdown="1">
 ## Efficient Transformers
 
-#### Linformer
+### Linformer
 
 [@wang2020linformer]
 
@@ -211,7 +207,7 @@ $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{sof
 
 <div class="tip" markdown="1">
 
- #### Complexity for each efficient attention 
+ ### Complexity for each efficient attention 
   
   </div>
 
@@ -264,15 +260,21 @@ computation.
 
 | Model Config       	| Intel Xeon(s) 	| Nvidia RTX 2060 Ti(s) 	| Nvidia A100(s) 	| FLOPS (Giga)    	| Parameters (M) 	|
 |--------------------	|------------	|--------------------	|------------	|---------------	|----------------	|
-| Linformer          	|     7.13    	|         0.18        	|    0.09    	|     1.56      	|   28.56       	|
-| Performer          	|     6.249    	|         0.16         	|    0.07    	|     1.47      	|   28.28       	|
-| Swin transformer   	|     6.86   	|         0.18        	|    0.086   	|     1.50      	|   28.28       	|
-| Resnet50           	|     8.63    	|         0.2         	|    0.12     	|     4.00      	|   25.6        	|
-| Vision Transformer 	|     8.904    	|         0.26        	|    0.13    	|     1.91      	|   28.27       	|
-| Fastformer         	|     4.589    	|         0.14         	|    0.05     	|     1.45      	|   28.28       	|
-| XCIT               	|     6.452    	|         0.17         	|    0.07     	|     1.47      	|   28.28       	|
+| Linformer          	|     7.13    	|         0.18        	|    0.09    	|     1.56      	| 28.56       	|
+| Performer          	|     6.249    	|         0.16         	|    0.07    	|     1.47      	| 28.28       	|
+| Swin transformer   	|     6.86   	|         0.18        	|    0.086   	|     1.50      	| 28.28       	|
+| Resnet50           	|     8.63    	|         0.2         	|    0.12     	|     4.00      	| 25.6        	|
+| Vision Transformer 	|     8.904    	|         0.26        	|    0.13    	|     1.91      	| 28.27       	|
+| Fastformer         	|     4.589    	|         0.14         	|    0.05     	|     1.45      	| 28.28       	|
+| XCIT               	|     6.452    	|         0.17         	|    0.07     	|     1.47      	| 28.28       	|
 
 
+![FLOPS vs Accuracy](images/flops_accuracy.png){#fig:cpu}
+![CPU Latency](images/latency_cpu.png){#fig:cpu}
+![GPU Latency](images/latency_gpu.png){#fig:gpu}
+  
+  
+  
 For the final project, we plan to benchmark these models' flops and
 inference times across various hardware to show performance vs.
 inference latency. Additionally, we will implement other efficient
