@@ -234,6 +234,7 @@ $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{sof
  These image patches are then projected to a dimension of $C$ using a linear projection. The complexity of each attention mechanism is given below:
 
 <div class="tip" markdown="1">
+  
 Model | Architecture Complexity
 --- | ---
 Transformer (SA) | O(N^2C)
@@ -249,7 +250,7 @@ Swin Transformer (Swin) | O(NC^3)
 # Results
 
 ![Top-1 Accuracy of the models on the dev
-set](images/top_1_accuracy.png){#fig:top1}
+set](images/accuracy.png){#fig:top1}
 
 
 For all of the models we have included as part of this report, we adjust
