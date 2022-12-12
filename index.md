@@ -101,6 +101,20 @@ Intra | 1721
 Normal | 27374
 Pituatary lesion | 83
 White matter changes | 10266
+  
+  
+## Brain injuries in the dataset:
+
+* Acute infarct: An acute infarct, also known as a stroke, is a type of brain injury that occurs when blood flow to a specific area of the brain is disrupted, causing brain tissue to die.
+* Arteriovenous anomaly: An arteriovenous anomaly is a type of brain injury in which there is a abnormal connection between the arteries and veins in the brain.
+* Chronic infarct: Chronic infarcts are brain injuries that occur over a longer period of time, as opposed to acute infarcts which occur suddenly. Chronic infarcts are caused by a disruption in blood flow to the brain, resulting in brain tissue death.
+* Edema: Edema, or swelling, in the brain can be a sign of a brain injury. It occurs when excess fluid builds up in the brain, causing the tissue to become swollen. This can lead to additional damage to the brain.
+* Extra: Extra is a term used to describe anything that is outside of the normal range or expectation. In the context of brain injuries, it may refer to abnormalities or conditions that are not typical or expected.
+* Focal flair hyper: Focal flair hyper refers to a specific type of brain injury in which there is an increase in blood flow to a particular area of the brain. This increase in blood flow can be a sign of injury or damage to the brain tissue.
+* Intra: Intra is a term that means "within" or "inside." In the context of brain injuries, it may refer to injuries or conditions that affect the brain tissue directly, rather than affecting the blood vessels or other structures outside of the brain.
+* Normal: Normal in this context refers to the absence of brain injuries or abnormalities. A "normal" brain scan would show no evidence of injuries or other conditions.
+* Pituatary lesion: A pituitary lesion is a type of brain injury that affects the pituitary gland, which is a small gland located at the base of the brain. Pituitary lesions can interfere with the gland's ability to produce hormones, which can lead to a wide range of health problems.
+* White matter changes: White matter changes refer to changes in the white matter of the brain, which is made up of nerve fibers that carry signals between different areas of the brain. These changes can be a sign of brain injury or damage, and can affect the brain's ability to function properly.
 
   
 </div>
