@@ -250,7 +250,7 @@ Swin Transformer (Swin) | O(NC^3)
 # Results
 
 ![Top-1 Accuracy of the models on the dev
-set](images/accuracy.png){#fig:top1}
+set](images/accuracy.png)
 
 
 For all of the models we have included as part of this report, we adjust
@@ -259,7 +259,7 @@ approximately 25M parameters. This allows us to conduct a fair
 comparison of the models by changing the attention mechanisms while
 keeping all other factors the same.
 
-Fig [2](#fig:top1) shows the
+The figure above shows the
 top-1 accuracy of the various models. We see the performance order from
 best to worst as linformer $>$ resnet50 $>$ ViT-tiny $>$ ViT-small $>$
 xcit.
