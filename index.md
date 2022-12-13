@@ -364,5 +364,5 @@ Fastformer[@wu2021fastformer], and Swin Transformer[@liu2021swin].****
 </html>
 
 # Gradio Demo
-<iframe src="https://abidlabs-pytorch-image-classifier.hf.space" width="800" height="600"></iframe>
+<iframe src="https://34c6bfb8f03adbaa.gradio.app/" width="800" height="600"></iframe>
  
