@@ -179,8 +179,8 @@ This can be written mathematically as:
 <span> $$\mathrm{Attention}(Q, K, V) = \mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$ </span>
 
 <span>
-where $Q$ is the query matrix, $K$ is the key matrix, $V$ is the value
-matrix, and $d_k$ is the dimension of the keys.
+where $$Q$$ is the query matrix, $$K$$ is the key matrix, $$V$$ is the value
+matrix, and $$d_k$$ is the dimension of the keys.
 </span>
   
   
