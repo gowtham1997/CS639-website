@@ -263,8 +263,8 @@ where:
 
  
 <div class="tip" markdown="1"> 
- ### Complexity for Efficient Attention mechanisms
- </div>
+### Complexity for Efficient Attention mechanisms
+</div>
 
  A image of size \(H X W X M\) is first divided into smaller tokens of size \(P\) X \(P\) X \(M\) where \(P\) is the patch size and \(M\) is the number of channels. The total number of tokens is \(N = H * W / P^2\).
 
