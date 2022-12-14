@@ -190,8 +190,8 @@ matrix, and \(d_k\) is the dimension of the keys.
 [@wang2020linformer]
 
 Linformer is a linear transformer that breaks down the self-attention
-mechanism into smaller, linear attentions (converts O($n^2$) in self
-attention to O($n$) with linear attention). This allows the Transformer
+mechanism into smaller, linear attentions (converts \(O(n^2)\) in self
+attention to \(O($n$)\) with linear attention). This allows the Transformer
 model to avoid the self-attention bottleneck. The original scaled
 dot-product attention is decomposed into multiple smaller attentions
 through linear projections. This combination of operations forms a
@@ -201,7 +201,7 @@ low-rank factorization of the original attention.
 
 $$\operatorname{LA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\operatorname{softmax}\left(\frac{\mathbf{q}\left[W_{\text {proj }} \mathbf{k}\right]^T}{\sqrt{d_k}}\right) W_{\text {proj }} \mathbf{v}$$
 
-Here, $q$ is the query vector, $k$ is the key vector and $W_{proj}$ is
+Here, \(q\) is the query vector, \(k\) is the key vector and \(W_{proj}\) is
 the projection matrix for the smaller self-attention spans.
 
 <div class="tip" markdown="1"> 
