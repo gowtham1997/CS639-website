@@ -190,8 +190,8 @@ matrix, and \(d_k\) is the dimension of the keys.
 [@wang2020linformer]
 
 Linformer is a linear transformer that breaks down the self-attention
-mechanism into smaller, linear attentions (converts O(\(n^2\)) in self
-attention to O(\(n\)) with linear attention). This allows the Transformer
+mechanism into smaller, linear attentions (converts O(n^2) in self
+attention to O(n)) with linear attention). This allows the Transformer
 model to avoid the self-attention bottleneck. The original scaled
 dot-product attention is decomposed into multiple smaller attentions
 through linear projections. This combination of operations forms a
@@ -224,13 +224,15 @@ attention mechanism used in this model is mathematically represented as
 
 $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{softmax}\left(\frac{\|\mathbf{q}\|_2^T\|\mathbf{k}\|_2}{\tau}\right) \mathbf{v}^T\right]^T$$
 
+<div class="tip" markdown="1">
+
 ### Fastformer
 
 The fastformer model uses element-wise multiplication to compute attention instead of using matrix multiplication. This allows the model to incorporate global context into each token representation. The fastformer uses learnable parameters to compute the global context and then applies element-wise multiplication to combine the context with the input tokens. The resulting attention is then projected using a learnable parameter. The computation complexity of this attention mechanism is O(NC). The equation for the additive attention used in the fastformer model is as follows:
 
  </div>
 
-AA(q, k, v) = q + [k0 * v]W
+ $$AA(q, k, v) = q + [k0 * v]W$$
 
 <div class="tip" markdown="1"> 
 where k0 is computed using q0 and * denotes element-wise multiplication. W is the projection parameter.
