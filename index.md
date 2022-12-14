@@ -190,8 +190,8 @@ matrix, and \(d_k\) is the dimension of the keys.
 [@wang2020linformer]
 
 Linformer is a linear transformer that breaks down the self-attention
-mechanism into smaller, linear attentions (converts \(O(n^2)\) in self
-attention to \(O($n$)\) with linear attention). This allows the Transformer
+mechanism into smaller, linear attentions (converts O(\(n^2\)) in self
+attention to O(\(n\)) with linear attention). This allows the Transformer
 model to avoid the self-attention bottleneck. The original scaled
 dot-product attention is decomposed into multiple smaller attentions
 through linear projections. This combination of operations forms a
