@@ -263,12 +263,12 @@ where:
 
  
 <div class="tip" markdown="1"> 
-### Complexity for Efficient Attention mechanisms
+###Complexity for Efficient Attention mechanisms
+
+A image of size \(H X W X M\) is first divided into smaller tokens of size \(P\) X \(P\) X \(M\) where \(P\) is the patch size and \(M\) is the number of channels. The total number of tokens is \(N = H * W / P^2\).
+
+These image patches are then projected to a dimension of \(C\) using a linear projection. The complexity of each attention mechanism is given below:
 </div>
-
- A image of size \(H X W X M\) is first divided into smaller tokens of size \(P\) X \(P\) X \(M\) where \(P\) is the patch size and \(M\) is the number of channels. The total number of tokens is \(N = H * W / P^2\).
-
- These image patches are then projected to a dimension of \(C\) using a linear projection. The complexity of each attention mechanism is given below:
 
 <div class="tip" markdown="1">
   
