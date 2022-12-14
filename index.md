@@ -386,3 +386,5 @@ We use saliency maps to help us identify which locations in the image are import
 Please use the above image from our test set to try out the demo. You can find more images from our test set [here](https://github.com/gowtham1997/CS639-website/tree/main/gradio_sample_images)
 
 <iframe src="https://34c6bfb8f03adbaa.gradio.app/" width="1200" height="900"></iframe>
+
+If the above demo is not working as expected, please feel free to email us at {msreedhar/gramesh4}[at]wisc.edu
