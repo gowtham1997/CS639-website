@@ -309,10 +309,9 @@ Fastformer (AA) | O(NC)
 XCiT (XCA) | O(NC^2)
 Swin Transformer (Swin) | O(NC^3) 
 
- 
-
-
 # Results
+  
+## Top-1 Accuracy
 
 ![Top-1 Accuracy of the models on the dev
 set](images/accuracy.png)
@@ -320,19 +319,18 @@ set](images/accuracy.png)
 
 For all of the models we have included as part of this report, we adjust
 the model configuration (number of layers, feed-forward units, etc.) to
-approximately 25M parameters. This allows us to conduct a fair
+approximately 28M parameters. This allows us to conduct a fair
 comparison of the models by changing the attention mechanisms while
 keeping all other factors the same.
 
-The figure above shows the
-top-1 accuracy of the various models. We see the performance order from
-best to worst as linformer $>$ resnet50 $>$ ViT-tiny $>$ ViT-small $>$
-xcit.
+The general trends we observe from the accuracy scores are
 
-Hence we see the efficient attention come close to and sometimes exceed
-the performance of the baseline ResNet and VIT models. Thus, future
-avenues exist to leverage efficient attention models to reduce
-computation.
+  * Transformer models outperform the CNN baseline.
+  * Efficient attention models perform as well as or sometimes even better than the full self-attention model.
+  * Fastformer is our best performing model with a top-1 accuracy of 91%.
+
+
+
 
 ## Benchmarking the FLOPS and Inference Latency
 
@@ -347,17 +345,26 @@ computation.
 | XCIT               	|     6.452    	|         0.17         	|    0.07     	|     1.47      	| 28.28       	|
 
 
-![FLOPS vs Accuracy](images/flops_accuracy.png){#fig:cpu}
+**NOTE** : Higher FLOPs != slower inference
+
+* FLOPs is hardware agnostic, while inference time depends on the device we deploy the model on.
+* Different devices have optimizations and parallelizations for various architectures, hence inference latency and FLOPs are not necessarily correlated.
+  
+### FLOPs vs Accuracy  
+ 
+![FLOPS vs Accuracy](images/flops_accuracy.png){#fig:flops}
+
+* Resnet-50 is not shown in the above plot since it distorts the scale. It uses 4 GFLOPs worth of computation.
+* Efficient Transformer models, on average, utilize ~35% fewer FLOPs than the full self-attention model. 
+* Fastformer, our best performing model, also uses the least FLOPs - best of both worlds.
+
+### Inference Latencies on CPU
+
 ![CPU Latency](images/latency_cpu.png){#fig:cpu}
 ![GPU Latency](images/latency_gpu.png){#fig:gpu}
   
   
   
-For the final project, we plan to benchmark these models' flops and
-inference times across various hardware to show performance vs.
-inference latency. Additionally, we will implement other efficient
-attention mechanisms - Performer[@performer],
-Fastformer[@wu2021fastformer], and Swin Transformer[@liu2021swin].****
  
  
  </div>
