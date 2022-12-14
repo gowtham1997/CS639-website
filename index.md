@@ -240,7 +240,7 @@ where \(k0\) is computed using \(q0\) and \(*\) denotes element-wise multiplicat
 ### Swin Transformer
 The Swin transformer is a variant of the transformer model that uses a sparse self-attention mechanism to reduce computation complexity. It uses a nested window attention with normal self-attention to focus on global interactions. The computation complexity of this attention mechanism is O(NCw^2), where w is the size of the window. In experiments, the size of the window is typically set to 7 or 8 when using patch sizes of 4 or 7, respectively.
 
-## Performer
+### Performer
 
 The performer model is an improved version of an attention mechanism that uses kernel approximation to compute attention. It uses a kernel function and a positive orthogonal random feature to approximate the softmax function. The performer model's attention equation is given as:
 
