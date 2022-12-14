@@ -1,5 +1,5 @@
 ---
-title: CS639 Project Website
+title: Efficient Transformers for Medical Image Classification
 layout: home
 usemathjax: true
 bibliography: ref.bib
