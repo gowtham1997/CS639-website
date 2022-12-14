@@ -23,6 +23,8 @@ bibliography: ref.bib
 
 <div class="tip" markdown="1">
 
+  
+
 
  
 # Introduction
@@ -377,5 +379,5 @@ We use saliency maps to help us identify which locations in the image are import
 </body>
 </html>
 
-# Gradio Demo
+# Gradio Demo(gradio_sample_images/white_matter_changes.png)
 <iframe src="https://34c6bfb8f03adbaa.gradio.app/" width="1200" height="900"></iframe>
