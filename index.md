@@ -336,12 +336,19 @@ The general trends we observe from the accuracy scores are
 ### Inference Latencies on CPU
 
 ![CPU Latency](images/latency_cpu.png){#fig:cpu}
+
+* We use the 2nd generation Intel Xeon Platinum 8000 series processor with all cores to compute the latency.
+* We use a batch size of 1 and average the latency over the entire test set.
+* Even though Resnet-50 uses 2.5x more FLOPs than the full self-attention transformer model, it has a lower latency time. This is because the convolution operation has been parallelized and optimized heavily for inference.
+
+### Inference Latencies on GPU
+
 ![GPU Latency](images/latency_gpu.png){#fig:gpu}
   
-  
-  
- 
- 
+* We consider two classes of GPUs for inference - the RTX 2080Ti and the latest model A100.
+* While running on the GPUs, instead of a cold start, we run a few batches for warm up and then measure inference latency. A cold start can lead to unreliable inference numbers.
+* An interesting trend to observe here is that on newer GPUs that are optimized for transformers (green curve for A100) we observe a drastic reduction in the relative difference between inference time of full self attention Transformer model and the Resnet-50.
+
  </div>
  
 </body>
