@@ -254,12 +254,12 @@ $$PA(q, k, v) = \frac{\psi(q)[\psi(k)^T v]}{\text{diag}(\psi(q)[\psi(k)^T \mathb
 where:
 
 
-
 * \( ψ(·) : R dq → R r + \) is the kernel function using a positive orthogonal random feature
 * IN is an N x N identity matrix
 * The computation complexity of this attention mechanism is O(NCr), where r is the project dimension. In experiments, r is typically set to \(C^2\) to ensure that it is smaller than N.
 
 </div>
+
 
  
 <div class="tip" markdown="1">
@@ -285,14 +285,24 @@ XCiT (XCA) | O($$NC^2$$)
 Swin Transformer (Swin) | O($$NC^3$$) 
 
  
-
+## Model Architecture - Transformer Backbone
+  
+In order to perform a fair comparison across the different attention mechanisms, we use a common transformer backbone architecture for all our experiments.
+  
+![Transformer Architecture](images/pyramid_structure.png)
+  
+* We first divide the input images into a fixed number of patches (for all results here, we use the patch size as 7)
+* We then obtain the patch embeddings that are fed as input to a sequence of modules. Each module includes a **Transformer block** and a **Patch Merge** operation.
+* The Patch Merge operation combines every 2 x 2 patch into a single one as the depth of the model increases. This has the effect of reducing the sequence length (number of patches).
+* In the final module, instead of a Patch Merge operation, we have a **Patch Pooling** operation. This effectively averages the representation over all patches giving us a single feature vector for the image that is then fed as input to the linear **Classifier** layer.
+* The model is optimized using the Cross-Entropy loss.
+* For each of our experiments, the overall structure of the model remains fixed and only the **type of attention** used in the Transformer layers is modified. 
 
 # Results
   
 ## Top-1 Accuracy
 
-![Top-1 Accuracy of the models on the dev
-set](images/accuracy.png)
+![Top-1 Accuracy of the models on the dev set](images/accuracy.png)
 
 
 For all of the models we have included as part of this report, we adjust
@@ -330,7 +340,7 @@ The general trends we observe from the accuracy scores are
   
 ### FLOPs vs Accuracy  
  
-![FLOPS vs Accuracy](images/flops_accuracy.png){#fig:flops}
+![FLOPS vs Accuracy](images/flops_accuracy.png)
 
 * Resnet-50 is not shown in the above plot since it distorts the scale. It uses 4 GFLOPs worth of computation.
 * Efficient Transformer models, on average, utilize ~35% fewer FLOPs than the full self-attention model. 
@@ -338,7 +348,7 @@ The general trends we observe from the accuracy scores are
 
 ### Inference Latencies on CPU
 
-![CPU Latency](images/latency_cpu.png){#fig:cpu}
+![CPU Latency](images/latency_cpu.png)
 
 * We use the 2nd generation Intel Xeon Platinum 8000 series processor with all cores to compute the latency.
 * We use a batch size of 1 and average the latency over the entire test set.
@@ -346,11 +356,21 @@ The general trends we observe from the accuracy scores are
 
 ### Inference Latencies on GPU
 
-![GPU Latency](images/latency_gpu.png){#fig:gpu}
+![GPU Latency](images/latency_gpu.png)
   
 * We consider two classes of GPUs for inference - the RTX 2080Ti and the latest model A100.
 * While running on the GPUs, instead of a cold start, we run a few batches for warm up and then measure inference latency. A cold start can lead to unreliable inference numbers.
 * An interesting trend to observe here is that on newer GPUs that are optimized for transformers (green curve for A100) we observe a drastic reduction in the relative difference between inference time of full self attention Transformer model and the Resnet-50.
+
+## Integrated Gradients and Saliency Maps
+  
+We use saliency maps to help us identify which locations in the image are important for the classification decision. Saliency maps utilize the magnitude of gradients to determine points in the image that play a crucial role in making the prediction. Higher the gradient magnitude at a particular point, the more important that location is for the image classification decision.
+
+![Saliency Maps](images/brain_attention_maps.png)
+
+* The first column is the input image, the second column is the magnitude of gradients and the third column superimposes the saliency map onto the original image.
+* The saliency maps in the above image are from the Fastformer model - we did not notice any major differences between the various transformer models.
+* This is promising - Approximation of the attention mechanism does not affect the interpretability of the model!  
 
  </div>
  
@@ -358,4 +378,4 @@ The general trends we observe from the accuracy scores are
 </html>
 
 # Gradio Demo
-<iframe src="https://34c6bfb8f03adbaa.gradio.app/" width="800" height="600"></iframe>
+<iframe src="https://34c6bfb8f03adbaa.gradio.app/" width="1200" height="900"></iframe>
