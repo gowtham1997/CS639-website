@@ -235,10 +235,10 @@ The fastformer model uses element-wise multiplication to compute attention inste
  $$AA(q, k, v) = q + [k0 * v]W$$
 
 <div class="tip" markdown="1"> 
-where k0 is computed using q0 and * denotes element-wise multiplication. W is the projection parameter.
+where \(k0\) is computed using \(q0\) and \(*\) denotes element-wise multiplication. W is the projection parameter.
 
 ### Swin Transformer
-The Swin transformer is a variant of the transformer model that uses a sparse self-attention mechanism to reduce computation complexity. It uses a nested window attention with normal self-attention to focus on global interactions. The computation complexity of this attention mechanism is O(NCw2), where w is the size of the window. In experiments, the size of the window is typically set to 7 or 8 when using patch sizes of 4 or 7, respectively.
+The Swin transformer is a variant of the transformer model that uses a sparse self-attention mechanism to reduce computation complexity. It uses a nested window attention with normal self-attention to focus on global interactions. The computation complexity of this attention mechanism is O(NCw^2), where w is the size of the window. In experiments, the size of the window is typically set to 7 or 8 when using patch sizes of 4 or 7, respectively.
 
 ## Performer
 
@@ -246,57 +246,29 @@ The performer model is an improved version of an attention mechanism that uses k
 
 </div>
 
-PA(q, k, v) = ψ(q)[ψ(k)T v] / diag(ψ(q)[ψ(k)T IN ])
+$$PA(q, k, v) = \frac{\psi(q)[\psi(k)^T v]}{\text{diag}(\psi(q)[\psi(k)^T \mathbb{1}_n])}$$
+
 
 <div class="tip" markdown="1"> 
 
 where:
+
+
+
+* \( ψ(·) : R dq → R r + \) is the kernel function using a positive orthogonal random feature
+* IN is an N x N identity matrix
+* The computation complexity of this attention mechanism is O(NCr), where r is the project dimension. In experiments, r is typically set to \(C^2\) to ensure that it is smaller than N.
 
 </div>
 
-ψ(·) : R dq → R r + is the kernel function using a positive orthogonal random feature
-IN is an N x N identity matrix
-The computation complexity of this attention mechanism is O(NCr), where r is the project dimension. In experiments, r is typically set to C^2 to ensure that it is smaller than N.
- 
-<div class="tip" markdown="1"> 
- 
- ### Fastformer
-
-The fastformer model uses element-wise multiplication to compute attention instead of using matrix multiplication. This allows the model to incorporate global context into each token representation. The fastformer uses learnable parameters to compute the global context and then applies element-wise multiplication to combine the context with the input tokens. The resulting attention is then projected using a learnable parameter. The computation complexity of this attention mechanism is O(NC). The equation for the additive attention used in the fastformer model is as follows:
-
-  </div>
-
-AA(q, k, v) = q + [k0 * v]W
-
-<div class="tip" markdown="1"> 
-
-where k0 is computed using q0 and * denotes element-wise multiplication. W is the projection parameter.
-
-### Swin Transformer
-
-The Swin transformer is a variant of the transformer model that uses a sparse self-attention mechanism to reduce computation complexity. It uses a nested window attention with normal self-attention to focus on global interactions. The computation complexity of this attention mechanism is O(NCw2), where w is the size of the window. In experiments, the size of the window is typically set to 7 or 8 when using patch sizes of 4 or 7, respectively.
-
-## Performer
-
-The performer model is an improved version of an attention mechanism that uses kernel approximation to compute attention. It uses a kernel function and a positive orthogonal random feature to approximate the softmax function. The performer model's attention equation is given as:
-
- </div>
-
-PA(q, k, v) = ψ(q)[ψ(k)T v] / diag(ψ(q)[ψ(k)T IN ])
-
-where:
-
-ψ(·) : R dq → R r + is the kernel function using a positive orthogonal random feature
-IN is an N x N identity matrix
-The computation complexity of this attention mechanism is O(NCr), where r is the project dimension. In experiments, r is typically set to C^2 to ensure that it is smaller than N.
  
 <div class="tip" markdown="1"> 
  ### Complexity for Efficient Attention mechanisms
  </div>
 
- A image of size H X W X M is first divided into smaller tokens of size $P$ X $P$ X $M$ where $P$ is the patch size and $M$ is the number of channels. The total number of tokens is $N = H * W / P^2$.
+ A image of size \(H X W X M\) is first divided into smaller tokens of size \(P\) X \(P\) X \(M\) where \(P\) is the patch size and \(M\) is the number of channels. The total number of tokens is \(N = H * W / P^2\).
 
- These image patches are then projected to a dimension of $C$ using a linear projection. The complexity of each attention mechanism is given below:
+ These image patches are then projected to a dimension of \(C\) using a linear projection. The complexity of each attention mechanism is given below:
 
 <div class="tip" markdown="1">
   
@@ -308,6 +280,9 @@ Performer (PA) | O(NC^2)
 Fastformer (AA) | O(NC)
 XCiT (XCA) | O(NC^2)
 Swin Transformer (Swin) | O(NC^3) 
+
+ 
+
 
 # Results
   
@@ -374,4 +349,3 @@ The general trends we observe from the accuracy scores are
 
 # Gradio Demo
 <iframe src="https://34c6bfb8f03adbaa.gradio.app/" width="800" height="600"></iframe>
- 
