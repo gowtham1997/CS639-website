@@ -398,17 +398,17 @@ If the above demo is not working as expected, please feel free to email us at {m
 
 ## References
 
-<a id="1">[1]</a> [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
-<a id="2">[2]</a> [Towards Robust Vision Transformer](https://arxiv.org/abs/2105.07926)
-<a id="3">[3]</a> [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
-<a id="4">[4]</a> [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://aclanthology.org/N19-1423)
-<a id="5">[5]</a> [ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks](https://proceedings.neurips.cc/paper/2020/file/2f1b0e9b9d9d9f9f9f9f9f9f9f9f9f9f-Paper.pdf)
-<a id="6">[6]</a> [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
-<a id="7">[7]</a> [Linformer: Self-Attention with Linear Complexity](https://arxiv.org/abs/2006.04768)
-<a id="8">[8]</a> [Fastformer: Additive Attention Can Be All You Need](https://arxiv.org/abs/2108.09084)
-<a id="9">[9]</a> [Rethinking Attention with Performers](https://arxiv.org/abs/2009.14794)
-<a id="10">[10]</a> [Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030)
-<a id="11">[11]</a> [ImageNet Classification with Deep Convolutional Neural Networks](https://proceedings.neurips.cc/paper/2012/file/4f7a7e7b9d9d9f9f9f9f9f9f9f9f9f9f-Paper.pdf)
-<a id="12">[12]</a> [RadImageNet: An Open Radiologic Deep Learning Research Dataset for Effective Transfer Learning](https://doi.org/10.1148/ryai.210315)
-<a id="13">[13]</a> [Hat: Hardware-aware transformers for efficient natural language processing](https://arxiv.org/abs/2005.14187)
-<a id="15">[14]</a> [XCiT: Cross-Covariance Image Transformers](https://arxiv.org/abs/2106.09681)
+<a id="2">[2]</a> [Towards Robust Vision Transformer](https://arxiv.org/abs/2105.07926)<br>
+<a id="3">[3]</a> [Attention Is All You Need](https://arxiv.org/abs/1706.03762)<br>
+<a id="4">[4]</a> [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://aclanthology.org/N19-1423)<br>
+<a id="1">[1]</a> [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)<br>
+<a id="5">[5]</a> [ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks](https://proceedings.neurips.cc/paper/2020/file/2f1b0e9b9d9d9f9f9f9f9f9f9f9f9f9f-Paper.pdf)<br>
+<a id="6">[6]</a> [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)<br>
+<a id="7">[7]</a> [Linformer: Self-Attention with Linear Complexity](https://arxiv.org/abs/2006.04768)<br>
+<a id="8">[8]</a> [Fastformer: Additive Attention Can Be All You Need](https://arxiv.org/abs/2108.09084)<br>
+<a id="9">[9]</a> [Rethinking Attention with Performers](https://arxiv.org/abs/2009.14794)<br>
+<a id="10">[10]</a> [Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030)<br>
+<a id="11">[11]</a> [ImageNet Classification with Deep Convolutional Neural Networks](https://proceedings.neurips.cc/paper/2012/file/4f7a7e7b9d9d9f9f9f9f9f9f9f9f9f9f-Paper.pdf)<br>
+<a id="12">[12]</a> [RadImageNet: An Open Radiologic Deep Learning Research Dataset for Effective Transfer Learning](https://doi.org/10.1148/ryai.210315)<br>
+<a id="13">[13]</a> [Hat: Hardware-aware transformers for efficient natural language processing](https://arxiv.org/abs/2005.14187)<br>
+<a id="15">[14]</a> [XCiT: Cross-Covariance Image Transformers](https://arxiv.org/abs/2106.09681)<br>
