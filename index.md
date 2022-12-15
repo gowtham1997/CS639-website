@@ -18,6 +18,8 @@ bibliography: ref.bib
 * [Project Video](https://drive.google.com/file/d/1CJ6hqsogIZj9_mM7asaY1XhzlDHUQ85J/view)
 * [Code Repository](https://github.com/gowtham1997/Benchmarking-Efficient-Transformers-for-Medical-Imaging)
 
+
+**Table Of Contents**:
 1. TOC
 {:toc}
 
