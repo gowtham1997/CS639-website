@@ -107,25 +107,25 @@ White matter changes | 10266
   
 ## Primer on Brain injuries and potential features that model would use for classification:
 
-* Acute infarct: An acute infarct, also known as a stroke, is a type of brain injury that occurs when blood flow to a specific area of the brain is disrupted, causing brain tissue to die. The model might look for evidence of this in the brain scan, such as areas of decreased blood flow or areas of dead brain tissue.
-* Arteriovenous anomaly: An arteriovenous anomaly is a type of brain injury in which there is a abnormal connection between the arteries and veins in the brain.
-* Chronic infarct: Chronic infarcts are brain injuries that occur over a longer period of time, as opposed to acute infarcts which occur suddenly. Chronic infarcts are caused by a disruption in blood flow to the brain, resulting in brain tissue death. These changes are typically visible on brain scans as darker contours clearly constrating against the normal brain's grey color and the model can be trained to recognize them.
-* Edema: Edema, or swelling, in the brain can be a sign of a brain injury. It occurs when excess fluid builds up in the brain, causing the tissue to become swollen. This can lead to additional damage to the brain.
-* Extra: Extra is a term used to describe anything that is outside of the normal range or expectation. In the context of brain injuries, it may refer to abnormalities or conditions that are not typical or expected.
-* Focal flair hyper: Focal flair hyper refers to a specific type of brain injury in which there is an increase in blood flow to a particular area of the brain. This increase in blood flow can be a sign of injury or damage to the brain tissue. This can typically be seen on brain scans as an area of increased brightness or contrast.
-* Intra: Intra is a term that means "within" or "inside." In the context of brain injuries, it may refer to injuries or conditions that affect the brain tissue directly, rather than affecting the blood vessels or other structures outside of the brain.
-* Normal: Normal in this context refers to the absence of brain injuries or abnormalities. A "normal" brain scan would show no evidence of injuries or other conditions.
-* Pituatary lesion: A pituitary lesion is a type of brain injury that affects the pituitary gland, which is a small gland located at the base of the brain. Pituitary lesions can interfere with the gland's ability to produce hormones, which can lead to a wide range of health problems. The model would try to look for abnormalities around the pituitary gland.
-* White matter changes: White matter changes refer to changes in the white matter of the brain, which is made up of nerve fibers that carry signals between different areas of the brain. The model can be trained to look for changes in the size, shape, or density of the nerve fibers that make up the white matter.
+* **Acute infarct**: An acute infarct, also known as a stroke, is a type of brain injury that occurs when blood flow to a specific area of the brain is disrupted, causing brain tissue to die. The model might look for evidence of this in the brain scan, such as areas of decreased blood flow or areas of dead brain tissue.
+* **Arteriovenous anomaly**: An arteriovenous anomaly is a type of brain injury in which there is a abnormal connection between the arteries and veins in the brain.
+* **Chronic infarct**: Chronic infarcts are brain injuries that occur over a longer period of time, as opposed to acute infarcts which occur suddenly. Chronic infarcts are caused by a disruption in blood flow to the brain, resulting in brain tissue death. These changes are typically visible on brain scans as darker contours clearly constrating against the normal brain's grey color and the model can be trained to recognize them.
+* **Edema**: Edema, or swelling, in the brain can be a sign of a brain injury. It occurs when excess fluid builds up in the brain, causing the tissue to become swollen. This can lead to additional damage to the brain.
+* **Extra**: Extra is a term used to describe anything that is outside of the normal range or expectation. In the context of brain injuries, it may refer to abnormalities or conditions that are not typical or expected.
+* **Focal flair hyper**: Focal flair hyper refers to a specific type of brain injury in which there is an increase in blood flow to a particular area of the brain. This increase in blood flow can be a sign of injury or damage to the brain tissue. This can typically be seen on brain scans as an area of increased brightness or contrast.
+* **Intra**: Intra is a term that means "within" or "inside." In the context of brain injuries, it may refer to injuries or conditions that affect the brain tissue directly, rather than affecting the blood vessels or other structures outside of the brain.
+* **Normal**: Normal in this context refers to the absence of brain injuries or abnormalities. A "normal" brain scan would show no evidence of injuries or other conditions.
+* **Pituatary lesion**: A pituitary lesion is a type of brain injury that affects the pituitary gland, which is a small gland located at the base of the brain. Pituitary lesions can interfere with the gland's ability to produce hormones, which can lead to a wide range of health problems. The model would try to look for abnormalities around the pituitary gland.
+* **White matter changes**: White matter changes refer to changes in the white matter of the brain, which is made up of nerve fibers that carry signals between different areas of the brain. The model can be trained to look for changes in the size, shape, or density of the nerve fibers that make up the white matter.
 
-![Brain Injuries](images/brain_injuries.png){#fig:brain_injuries}
+![Brain Injuries](images/brain_injuries.png)
   
 </div>
 
 <div class="tip" markdown="1">
 ![Sample MRI images showing brain injuries. The bright white regions in
 the second scan indicate a type of Intracranial
-Hemorrhage.](images/brain_bleeds_mri.png){#fig:brain-bleed width="100%"}
+Hemorrhage.](images/brain_bleeds_mri.png)
 
 For image classification - accuracy, AUC, sensitivity, and specificity /
 Cohen Kappa are some standard evaluation metrics. Each has its own
