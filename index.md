@@ -399,7 +399,6 @@ If the above demo is not working as expected, please feel free to email us at {m
 <a id="2">[2]</a> [Towards Robust Vision Transformer](https://arxiv.org/abs/2105.07926)<br>
 <a id="3">[3]</a> [Attention Is All You Need](https://arxiv.org/abs/1706.03762)<br>
 <a id="4">[4]</a> [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://aclanthology.org/N19-1423)<br>
-<a id="1">[1]</a> [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)<br>
 <a id="5">[5]</a> [ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks](https://proceedings.neurips.cc/paper/2020/file/2f1b0e9b9d9d9f9f9f9f9f9f9f9f9f9f-Paper.pdf)<br>
 <a id="6">[6]</a> [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)<br>
 <a id="7">[7]</a> [Linformer: Self-Attention with Linear Complexity](https://arxiv.org/abs/2006.04768)<br>
