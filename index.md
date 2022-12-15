@@ -5,6 +5,19 @@ usemathjax: true
 bibliography: ref.bib
 ---
 
+# Benchmarking Efficient Transformers for Medical Imaging
+
+**Team Members**
+
+- Makesh Sreedhar (msreedhar[at]wisc.edu)
+- Gowtham Ramesh (gramesh4[at]wisc.edu)
+- Kriti Goyal (kgoyal6[at]wisc.edu)
+
+**Important Links**:
+* [Project Presentation](https://docs.google.com/presentation/d/1Uhy1qlZEpGZ4DNiAhHwD8F9stMAv5h5TyGHepr6FybI)
+* [Project Video](https://drive.google.com/file/d/1CJ6hqsogIZj9_mM7asaY1XhzlDHUQ85J/view)
+* [Code Repository](https://github.com/gowtham1997/Benchmarking-Efficient-Transformers-for-Medical-Imaging)
+
 1. TOC
 {:toc}
 
@@ -23,23 +36,18 @@ bibliography: ref.bib
 
 <div class="tip" markdown="1">
 
-  
-
-
- 
 # Introduction
 
 Recently, deep learning models have shown remarkable performance in
 different vision tasks ranging from classification, segmentation,
 text-to-image generation, and more. Instead of modality-specific
 architectures (CNN for vision, LSTM for NLP, etc.), most modern works
-use transformer[@vaswani] networks that can work with
-images[@vit; @robustvit], text[@devlin-etal-2019-bert] and even some
+use transformer [[3]](#3) networks that can work with
+images, text [[4]](#4) and even some
 combination of multiple modalities. In this project, we look at
 benchmarking inference times(FLOPS/image per sec) across different
 vision architectures from the popular CNN-based ResNet, Vision
-transformer, and some efficient sparse
-[@wang2020linformer; @wu2021fastformer; @liu2021swin; @choromanski2021rethinking]
+transformer, and some efficient sparse [[7]](#7), [[8]](#8), [[10]](#10), [[9]](#9)
 attention alternatives on medical image classification. We would also
 like to analyze how the attention mechanism differs between different
 architectures and its effect on downstream performance.
@@ -72,7 +80,7 @@ capture the impact on downstream performance accurately.
 
 # Datasets and Evaluation
 
-The RadImageNet[@RadImageNet] dataset includes 1.35 million annotated
+The RadImageNet[[12]](#12) dataset includes 1.35 million annotated
 ultrasound, radiographs, and CT scans for several classification tasks
 based on medical imaging. It is publicly available for research, and the
 RadImageNet team approved our request to use this dataset.
@@ -88,23 +96,23 @@ it a challenging benchmark to baseline our models. Table
 class distribution of this dataset.
 
 </div>
-  
+
 <div class="tip" markdown="1">
 
-Label | Count
---- | ---
-Acute infarct | 513
-Arteriovenous anomaly | 272
-Chronic infarct | 2307
-Edema | 125
-Extra | 1259
-Focal flair hyper | 751
-Intra | 1721
-Normal | 27374
-Pituatary lesion | 83
-White matter changes | 10266
-  
-  
+| Label                 | Count |
+| --------------------- | ----- |
+| Acute infarct         | 513   |
+| Arteriovenous anomaly | 272   |
+| Chronic infarct       | 2307  |
+| Edema                 | 125   |
+| Extra                 | 1259  |
+| Focal flair hyper     | 751   |
+| Intra                 | 1721  |
+| Normal                | 27374 |
+| Pituatary lesion      | 83    |
+| White matter changes  | 10266 |
+
+
 ## Primer on Brain injuries and potential features that model would use for classification:
 
 * **Acute infarct**: An acute infarct, also known as a stroke, is a type of brain injury that occurs when blood flow to a specific area of the brain is disrupted, causing brain tissue to die. The model might look for evidence of this in the brain scan, such as areas of decreased blood flow or areas of dead brain tissue.
@@ -119,7 +127,7 @@ White matter changes | 10266
 * **White matter changes**: White matter changes refer to changes in the white matter of the brain, which is made up of nerve fibers that carry signals between different areas of the brain. The model can be trained to look for changes in the size, shape, or density of the nerve fibers that make up the white matter.
 
 ![Brain Injuries](images/brain_injuries.png)
-  
+
 </div>
 
 <div class="tip" markdown="1">
@@ -145,14 +153,14 @@ multiple cores like Intel Xeon, a slightly older Nvidia GPU like
 like RTX 3090.
 
 We choose the above efficiency metrics as FLOPs are not a proxy for
-latency [@wang2020hat], i.e., a model with the same FLOPS has different
+latency [[13]](#13), i.e., a model with the same FLOPS has different
 latencies on different hardware.
 
 # Models
 
 ### Resnet-50 (CNN Baseline)
 
-ResNet-50[@he2015deep] is a deep convolutional neural network trained on
+ResNet-50[[11]](#11) is a deep convolutional neural network trained on
 more than a million images from the ImageNet database. The network is 50
 layers deep and can classify images into 1000 different categories. It
 is one of the first networks to propose using residual connections that
@@ -163,7 +171,7 @@ much deeper models.
 
 ### Vision Transformer
 
-The ViT model uses a Transformer-like architecture to classify images.
+The ViT[[1]](#1) model uses a Transformer-like architecture to classify images.
 An image is split into fixed-size patches, each patch is embedded,
 position embeddings are added, and the resulting sequence of vectors is
 fed to a standard Transformer encoder. The standard approach of adding
@@ -177,28 +185,26 @@ that vector.
 
 This can be written mathematically as:
 </div>
- 
+
 <span> $$\mathrm{Attention}(Q, K, V) = \mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$ </span>
 
 where \(Q\) is the query matrix, \(K\) is the key matrix, \(V\) is the value
 matrix, and \(d_k\) is the dimension of the keys.
 
-  
+
 <div class="tip" markdown="1">
 ## Efficient Transformers
 
 ### Linformer
 
-[@wang2020linformer]
-
-Linformer is a linear transformer that breaks down the self-attention
+Linformer[[7]](#7) is a linear transformer that breaks down the self-attention
 mechanism into smaller, linear attentions (converts O(n^2) in self
 attention to O(n)) with linear attention). This allows the Transformer
 model to avoid the self-attention bottleneck. The original scaled
 dot-product attention is decomposed into multiple smaller attentions
 through linear projections. This combination of operations forms a
 low-rank factorization of the original attention.
- 
+
 </div>
 
 $$\operatorname{LA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\operatorname{softmax}\left(\frac{\mathbf{q}\left[W_{\text {proj }} \mathbf{k}\right]^T}{\sqrt{d_k}}\right) W_{\text {proj }} \mathbf{v}$$
@@ -206,12 +212,10 @@ $$\operatorname{LA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\operatorname{softmax}\l
 Here, \(q\) is the query vector, \(k\) is the key vector and \(W_{proj}\) is
 the projection matrix for the smaller self-attention spans.
 
-<div class="tip" markdown="1"> 
+<div class="tip" markdown="1">
 ### XCIT
 
-[@xcit]
-
-This model uses a variant of self-attention known as cross-covariance
+XCIT[[14]](#15) uses a variant of self-attention known as cross-covariance
 attention. It is a transposed version of self-attention that operates
 across the feature dimension rather than across the tokens. The authors
 of this architecture observed that using this form of attention led to
@@ -222,7 +226,7 @@ attention mechanism used in this model is mathematically represented as
 
 
 
- </div> 
+ </div>
 
 $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{softmax}\left(\frac{\|\mathbf{q}\|_2^T\|\mathbf{k}\|_2}{\tau}\right) \mathbf{v}^T\right]^T$$
 
@@ -230,28 +234,28 @@ $$\operatorname{XCA}(\mathbf{q}, \mathbf{k}, \mathbf{v})=\left[\operatorname{sof
 
 ### Fastformer
 
-The fastformer model uses element-wise multiplication to compute attention instead of using matrix multiplication. This allows the model to incorporate global context into each token representation. The fastformer uses learnable parameters to compute the global context and then applies element-wise multiplication to combine the context with the input tokens. The resulting attention is then projected using a learnable parameter. The computation complexity of this attention mechanism is O(NC). The equation for the additive attention used in the fastformer model is as follows:
+The Fastformer[[8]](#8) model uses element-wise multiplication to compute attention instead of using matrix multiplication. This allows the model to incorporate global context into each token representation. The fastformer uses learnable parameters to compute the global context and then applies element-wise multiplication to combine the context with the input tokens. The resulting attention is then projected using a learnable parameter. The computation complexity of this attention mechanism is O(NC). The equation for the additive attention used in the fastformer model is as follows:
 
  </div>
 
  $$AA(q, k, v) = q + [k0 * v]W$$
 
-<div class="tip" markdown="1"> 
+<div class="tip" markdown="1">
 where \(k0\) is computed using \(q0\) and \(*\) denotes element-wise multiplication. W is the projection parameter.
 
 ### Swin Transformer
-The Swin transformer is a variant of the transformer model that uses a sparse self-attention mechanism to reduce computation complexity. It uses a nested window attention with normal self-attention to focus on global interactions. The computation complexity of this attention mechanism is O(NCw^2), where w is the size of the window. In experiments, the size of the window is typically set to 7 or 8 when using patch sizes of 4 or 7, respectively.
+The Swin transformer[[10]](#10) is a variant of the transformer model that uses a sparse self-attention mechanism to reduce computation complexity. It uses a nested window attention with normal self-attention to focus on global interactions. The computation complexity of this attention mechanism is O(NCw^2), where w is the size of the window. In experiments, the size of the window is typically set to 7 or 8 when using patch sizes of 4 or 7, respectively.
 
 ### Performer
 
-The performer model is an improved version of an attention mechanism that uses kernel approximation to compute attention. It uses a kernel function and a positive orthogonal random feature to approximate the softmax function. The performer model's attention equation is given as:
+The Performer[[9]](#9) model is an improved version of an attention mechanism that uses kernel approximation to compute attention. It uses a kernel function and a positive orthogonal random feature to approximate the softmax function. The performer model's attention equation is given as:
 
 </div>
 
 $$PA(q, k, v) = \frac{\psi(q)[\psi(k)^T v]}{\text{diag}(\psi(q)[\psi(k)^T \mathbb{1}_n])}$$
 
 
-<div class="tip" markdown="1"> 
+<div class="tip" markdown="1">
 
 where:
 
@@ -263,7 +267,7 @@ where:
 </div>
 
 
- 
+
 <div class="tip" markdown="1">
 
 ### Complexity for Efficient Attention mechanisms
@@ -276,32 +280,32 @@ These image patches are then projected to a dimension of \(C\) using a linear pr
 
 
 <div class="tip" markdown="1">
-  
-Model | Architecture Complexity
---- | ---
-Transformer (SA) | O($$N^2C$$)
-Linformer (LA) | O($$N^2C$$)
-Performer (PA) | O($$NC^2$$)
-Fastformer (AA) | O($$NC$$)
-XCiT (XCA) | O($$NC^2$$)
-Swin Transformer (Swin) | O($$NC^3$$) 
 
- 
+| Model                   | Architecture Complexity |
+| ----------------------- | ----------------------- |
+| Transformer (SA)        | O($$N^2C$$)             |
+| Linformer (LA)          | O($$N^2C$$)             |
+| Performer (PA)          | O($$NC^2$$)             |
+| Fastformer (AA)         | O($$NC$$)               |
+| XCiT (XCA)              | O($$NC^2$$)             |
+| Swin Transformer (Swin) | O($$NC^3$$)             |
+
+
 ## Model Architecture - Transformer Backbone
-  
+
 In order to perform a fair comparison across the different attention mechanisms, we use a common transformer backbone architecture for all our experiments.
-  
+
 ![Transformer Architecture](images/pyramid_structure.png)
-  
+
 * We first divide the input images into a fixed number of patches (for all results here, we use the patch size as 7)
 * We then obtain the patch embeddings that are fed as input to a sequence of modules. Each module includes a **Transformer block** and a **Patch Merge** operation.
 * The Patch Merge operation combines every 2 x 2 patch into a single one as the depth of the model increases. This has the effect of reducing the sequence length (number of patches).
 * In the final module, instead of a Patch Merge operation, we have a **Patch Pooling** operation. This effectively averages the representation over all patches giving us a single feature vector for the image that is then fed as input to the linear **Classifier** layer.
 * The model is optimized using the Cross-Entropy loss.
-* For each of our experiments, the overall structure of the model remains fixed and only the **type of attention** used in the Transformer layers is modified. 
+* For each of our experiments, the overall structure of the model remains fixed and only the **type of attention** used in the Transformer layers is modified.
 
 # Results
-  
+
 ## Top-1 Accuracy
 
 ![Top-1 Accuracy of the models on the dev set](images/accuracy.png)
@@ -339,13 +343,13 @@ The general trends we observe from the accuracy scores are
 
 * FLOPs is hardware agnostic, while inference time depends on the device we deploy the model on.
 * Different devices have optimizations and parallelizations for various architectures, hence inference latency and FLOPs are not necessarily correlated.
-  
-### FLOPs vs Accuracy  
- 
+
+### FLOPs vs Accuracy
+
 ![FLOPS vs Accuracy](images/flops_accuracy.png)
 
 * Resnet-50 is not shown in the above plot since it distorts the scale. It uses 4 GFLOPs worth of computation.
-* Efficient Transformer models, on average, utilize ~35% fewer FLOPs than the full self-attention model. 
+* Efficient Transformer models, on average, utilize ~35% fewer FLOPs than the full self-attention model.
 * Fastformer, our best performing model, also uses the least FLOPs - best of both worlds.
 
 ### Inference Latencies on CPU
@@ -359,23 +363,23 @@ The general trends we observe from the accuracy scores are
 ### Inference Latencies on GPU
 
 ![GPU Latency](images/latency_gpu.png)
-  
+
 * We consider two classes of GPUs for inference - the RTX 2080Ti and the latest model A100.
 * While running on the GPUs, instead of a cold start, we run a few batches for warm up and then measure inference latency. A cold start can lead to unreliable inference numbers.
 * An interesting trend to observe here is that on newer GPUs that are optimized for transformers (green curve for A100) we observe a drastic reduction in the relative difference between inference time of full self attention Transformer model and the Resnet-50.
 
 ## Integrated Gradients and Saliency Maps
-  
+
 We use saliency maps to help us identify which locations in the image are important for the classification decision. Saliency maps utilize the magnitude of gradients to determine points in the image that play a crucial role in making the prediction. Higher the gradient magnitude at a particular point, the more important that location is for the image classification decision.
 
 ![Saliency Maps](images/brain_attention_maps.png)
 
 * The first column is the input image, the second column is the magnitude of gradients and the third column superimposes the saliency map onto the original image.
 * The saliency maps in the above image are from the Fastformer model - we did not notice any major differences between the various transformer models.
-* This is promising - Approximation of the attention mechanism does not affect the interpretability of the model!  
+* This is promising - Approximation of the attention mechanism does not affect the interpretability of the model!
 
  </div>
- 
+
 </body>
 </html>
 
@@ -388,3 +392,21 @@ Please use the above image from our test set to try out the demo. You can find m
 <iframe src="https://34c6bfb8f03adbaa.gradio.app/" width="1200" height="900"></iframe>
 
 If the above demo is not working as expected, please feel free to email us at {msreedhar/gramesh4}[at]wisc.edu
+
+
+## References
+
+<a id="1">[1]</a> [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
+<a id="2">[2]</a> [Towards Robust Vision Transformer](https://arxiv.org/abs/2105.07926)
+<a id="3">[3]</a> [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+<a id="4">[4]</a> [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://aclanthology.org/N19-1423)
+<a id="5">[5]</a> [ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks](https://proceedings.neurips.cc/paper/2020/file/2f1b0e9b9d9d9f9f9f9f9f9f9f9f9f9f-Paper.pdf)
+<a id="6">[6]</a> [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+<a id="7">[7]</a> [Linformer: Self-Attention with Linear Complexity](https://arxiv.org/abs/2006.04768)
+<a id="8">[8]</a> [Fastformer: Additive Attention Can Be All You Need](https://arxiv.org/abs/2108.09084)
+<a id="9">[9]</a> [Rethinking Attention with Performers](https://arxiv.org/abs/2009.14794)
+<a id="10">[10]</a> [Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030)
+<a id="11">[11]</a> [ImageNet Classification with Deep Convolutional Neural Networks](https://proceedings.neurips.cc/paper/2012/file/4f7a7e7b9d9d9f9f9f9f9f9f9f9f9f9f-Paper.pdf)
+<a id="12">[12]</a> [RadImageNet: An Open Radiologic Deep Learning Research Dataset for Effective Transfer Learning](https://doi.org/10.1148/ryai.210315)
+<a id="13">[13]</a> [Hat: Hardware-aware transformers for efficient natural language processing](https://arxiv.org/abs/2005.14187)
+<a id="15">[14]</a> [XCiT: Cross-Covariance Image Transformers](https://arxiv.org/abs/2106.09681)
