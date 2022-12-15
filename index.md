@@ -36,7 +36,7 @@ bibliography: ref.bib
 <body>
 
 
-<div class="tip" markdown="1">
+<div class="tip" markdown="1" tyle="text-align: justify">
 
 # Introduction
 
