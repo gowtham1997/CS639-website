@@ -88,12 +88,6 @@ text, etc, and we intend to use this for quanlititative check of image embedding
 
 In summary, we plan to use 3 datasets - one with less text, one with denser
 text for entity recognition and a dataset for document classification/ clustering.
-
-
-</div>
-
-</div>
-
 # Models
 
 ### End2EndModel - LayoutLM (Deep Learning Model)
