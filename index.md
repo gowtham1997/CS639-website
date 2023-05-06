@@ -79,8 +79,9 @@ that we can also test the models on entity extraction + detection. In total, we 
 FUNSD[4]: The FUNSD dataset is a collection of annotated forms in various
 formats, including scanned PDFs and images, designed for form understanding
 tasks such as layout analysis, information extraction, and field identification.
-The dataset contains 199 real, fully annotated, scanned forms, as shown in
-Figure 1.
+The dataset contains 199 real, fully annotated, scanned forms, as shown in figure below.
+
+![Funsd datset labelled](images/Funsd_labelled.png)
 
 RVL-CDIP dataset[7]: Unlike the other three datasets, which focus on entity
 extraction, this dataset contains images of emails, documents, invoices, scientific
@@ -132,7 +133,7 @@ to create state-of-the-art models for a wide range of tasks.
 We plan to adapt BERT or a variant of BERT to do entity recognition on
 top of OCRed output.
 
-![bert architechture](images/none2e.png)
+![bert architechture](images/bert_arch.png)
 
 ### Non-end2end model workflow
 
@@ -145,11 +146,7 @@ top of OCRed output.
 
 Based on the F1 scores shown in the table 1, we can see that the end-to-end
 system (LayoutLM) outperformed the non-end-to-end system on all four classes
-of the FUNSD dataset as well as the overall F1 score. The largest improvements
-were observed in the ”Answer” and ”Other” classes. In fact this the class that
-was confused most by the BERT model leading to poorer results for non-end
-to end system, while the end2end system uses the conventional question that
-follows the answer from the image to get better accuracy.
+of the FUNSD dataset as well as the overall F1 score.
 
 Comparison of F1 scores on FUNSD dataset by class
 
@@ -161,14 +158,24 @@ Comparison of F1 scores on FUNSD dataset by class
 | Other           	|     0.67    	|         0.83         	|
 | Overall 	|     0.71    	|         0.845        	|
 
+#### Observations:
+The largest improvements were observed in the ”Answer” and ”Other” classes. In fact this the class that
+was confused most by the BERT model leading to poorer results for non-end
+to end system, while the end2end system uses the conventional question that
+follows the answer from the image to get better accuracy.
+
 ## Labelling Stanford visual search
 
-As mentioned before, this dataset is intended for visual search, but we repurpose
+Though this dataset is intended for visual search, but we repurpose
 this dataset to do entity recognition as it is a good benchmark to test images
 less text (compared to PDF images which are dense in text). Since we dont have
 the entity labels, we create pseudolabels with GPT-3[6] api. A manual check of
 25 images entity labels shows that we get 100% accurate entities except for Fax
 vs phone. Hence we skip both these classes for evaluation.
+
+![Prompt](images/gpt3_prompting.png)
+
+The above example shows our prompt with output hyperparameters in the OpenAI playground. We use langchain framework to hit the api and pseudolabel the dataset.
 
 ## Results on Stanford Visual search dataset
 
@@ -192,22 +199,39 @@ Comparison of F1 scores on the Stanford Visual Search Dataset by class
 | Email 	|     0.72    	|         0.91        	|
 | Overall 	|     0.81   	|         0.92        	|
 
+#### Observation:
+
+For most clasess ignoring the OCR mishap, we see that nonend2end models result is on par with end2end model. This can easily be attributed to the fact that structure in visiting cards dont matter as much as they matter in text documents or other document understanding task. This is also evident from the fact that large language models like GPT-3 can accurately pseudo label the dataset with just text and no strcuture information.
+
+
 
 ## Qualitative comparison on RVL-CDIP classes
 
-![Quantitative comparison on RVL-CDIP classes](images/TSNE.png)
+Unlike entity extraction which requires a text-based model for non-end2end model, this task can just be solved by a image model. But since this task still requires document understanding, we focus on understanding the qualititative embeddings of the two models.
 
-We randomly sampled 100 examples from each class and plotted the TSNE projection of the embedding.
-For LayoutLM, we use the [CLS] token, while for resnet we get embedding from image2vec library.
+We mainly compare Resnet-50 and LayoutLM embeddings on the subset of this dataset after finetuning. We understand that the task is an unfair comparison as LayoutLM is also pretrained on some document understanding benchmarks and has a better initialization, but we still want to demonstrate how bad is the popular resnet embeddings for this task.
+
+Task setting: We randomly sampled 100 examples from each class and plotted the TSNE projection of the embedding.
+For LayoutLM, we use the [CLS] token, while for resnet we get embedding from image2vec library of the finetuned checkpoint.
+
+![Quantitative comparison on RVL-CDIP classes](images/TSNE.png)
+#### Observations:
+
+We clearly see that LayoutLM embeddings show better class separation than resnet embeddings. This further illustrates why newer end2endmodel emdeddings are better initialization for most document understanding tasks than older pipeline based appraoches.
+
 
 ## Conclusion and potential future work
 
-From both quantitative and qualitative results, we see that using layout information and end2end training significantly outperforms pipeline based approaches
+- From both quantitative and qualitative results, we see that using layout information and end2end training significantly outperforms pipeline based approaches
 For Non-end2end approaches, we find that most of the errors occur due to OCR engine (we use same ocr library for both approaches) but these errors are mitigated in end2end approaches which further integrate layout and image information end2end (Errors propagate in non-end2end approaches)
 
-One potential drawback of end2end approaches is the vast amount of clean pretraining data (document text pairs and document classification datasets) needed to train the model. Ablating these resources and studying their cost comparing non-end2end approaches could be a good future work.
+- One potential drawback of end2end approaches is the vast amount of clean pretraining data (document text pairs and document classification datasets) needed to train the model. Ablating these resources and studying their cost comparing non-end2end approaches could be a good future work.
 
-Recent works advocate for OCR free approaches and process image single shot and pass the representations to a pretrained language model decoder which also has capabilities to do zero-shot reasoning (Question answering, mutli-step classification or more)
+- Our results strongly suggest end2endmodel pretraining appraoches are a much better initialization (quantitatively and qualitatively) across a low resource scenarios(funds, stanford visual search), tasks with denser text in images and large scale datasets (RVL-CDIP).
+
+- Most of our error analysis also indicate OCR component in both these model (tesseract) is a significant bottleneck but its errors are sort of mitigated due to structure in end2end models but propagated in non-end2end models. Hence, we believe that future work should focus on improving OCR engines or adopting OCR free approaches.
+
+Recent works advocate for OCR free approaches and process image single shot and pass the representations to a pretrained language model decoder which also has capabilities to do zero-shot reasoning (Question answering, mutli-step classification or more). We believe these systems are the future and more work leveraging the capabilites of LLMs to further improve image models or multimodal systems is the way forward.
 
 
  </div>
