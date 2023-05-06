@@ -57,9 +57,9 @@ approaches
 2. How do the two approaches compare in terms of the amount of text present in
 the images, considering low-text content scenarios such as visiting cards and
 high-text content scenarios like documents?
-<!-- 3. How do the two approaches perform in scenarios with limited data resources,
+3. How do the two approaches perform in scenarios with limited data resources,
 such as low-resource settings, compared to high-resource settings
-for fine-tuning? -->
+for fine-tuning?
 
 By answering the questions posed in this project, we can better understand the
 effectiveness and efficiency of end-to-end approaches compared to non-end-to-end
@@ -84,7 +84,7 @@ Figure 1.
 
 RVL-CDIP dataset[7]: Unlike the other three datasets, which focus on entity
 extraction, this dataset contains images of emails, documents, invoices, scientific
-text, etc, and we intend to use this for quanlititative check of image embeddings for document classification. Specifically, It consists of 400,000 grayscale images in 16 classes, with 25,000 images per class. To make training on a small scale, we only train on 50K images preserving the class distribution.
+text, etc, and we intend to use this for quanlititative check of image embeddings for document classification. Specifically, It consists of 400,000 grayscale images in 16 classes, with 25,000 images per class. To make training on a small scale, we only train on 50K images across 10 classes preserving the class distribution.
 
 In summary, we plan to use 3 datasets - one with less text, one with denser
 text for entity recognition and a dataset for document classification/ clustering.
@@ -131,6 +131,10 @@ the masked language model objective, and can be fine-tuned with just one additio
 to create state-of-the-art models for a wide range of tasks.
 We plan to adapt BERT or a variant of BERT to do entity recognition on
 top of OCRed output.
+
+![bert architechture](images/none2e.png)
+
+### Non-end2end model workflow
 
 ![non end to end approaches](images/none2e.png)
 
