@@ -36,7 +36,7 @@ bibliography: ref.bib
 
 # Introduction
 
-The field of multi-modal deep learning is rapidly developing, with
+The field of multi-modal deep learning [2,3,10] is rapidly developing, with
 the goal of creating models that can process and understand data from multiple
 sources like text, images, and audio. The integration of different modalities,
 such as text, images, and audio, is becoming increasingly important in areas
@@ -93,7 +93,7 @@ text for entity recognition and a dataset for document classification/ clusterin
 
 ### End2EndModel - LayoutLM (Deep Learning Model)
 
-LayoutLM is a multimodal Transformer model which is used to
+LayoutLM[11] is a multimodal Transformer model which is used to
 perform document processing.
 It is a pre-training model that incorporates both text and layout
 information for document image understanding. The authors demonstrate that
@@ -108,7 +108,7 @@ We plan to use LayoutLM as our end to end model for this project.
 
 ### Non End2EndModel - CTPN
 
-CTPN refers to Connectionist Text Proposal Network. This name was given to this model
+CTPN[8] refers to Connectionist Text Proposal Network. This name was given to this model
 because it detects text lines in sequence of text proposals.
 It uses a pre-trained VGG16 model to extract features from the image
 and then uses a recurrent neural network to generate text proposals.
@@ -125,7 +125,7 @@ systems would be optimized separately.
 
 ### BERT (Natural Language Processing Model)
 
-BERT refers to Bidirectional Encoder Representations from Transformers.
+BERT[1] refers to Bidirectional Encoder Representations from Transformers.
 This is a language representation model that can be used for a wide range of natural language
 processing tasks. It is pre-trained on a massive dataset of unlabeled text with
 the masked language model objective, and can be fine-tuned with just one additional output layer
@@ -231,7 +231,7 @@ For Non-end2end approaches, we find that most of the errors occur due to OCR eng
 
 - Most of our error analysis also indicate OCR component in both these model (tesseract) is a significant bottleneck but its errors are sort of mitigated due to structure in end2end models but propagated in non-end2end models. Hence, we believe that future work should focus on improving OCR engines or adopting OCR free approaches.
 
-Recent works advocate for OCR free approaches and process image single shot and pass the representations to a pretrained language model decoder which also has capabilities to do zero-shot reasoning (Question answering, mutli-step classification or more). We believe these systems are the future and more work leveraging the capabilites of LLMs to further improve image models or multimodal systems is the way forward.
+Recent works advocate for OCR free approaches and process image single shot and pass the representations to a pretrained language model decoder[6] which also has capabilities to do zero-shot reasoning (Question answering, mutli-step classification or more). We believe these systems are the future and more work leveraging the capabilites of LLMs to further improve image models or multimodal systems is the way forward.
 
 
  </div>
@@ -240,14 +240,36 @@ Recent works advocate for OCR free approaches and process image single shot and 
 </html>
 
 ## References
-<a id="1">[1]</a> Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K. Bert:
-Pre-training of deep bidirectional transformers for language understanding, 2019.
- <br>
-<a id="2">[2]</a> Dodds, E., Nguyen, H., Herdade, S., Culpepper, J., Kae, A., and
+[1] Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K. Bert:
+Pre-training of deep bidirectional transformers for language understand-
+ing, 2019.
+[2] Dodds, E., Nguyen, H., Herdade, S., Culpepper, J., Kae, A., and
 Garrigues, P. Learning embeddings for product visual search with triplet
-loss and online sampling, 2018.<br>
-<a id="3">[3]</a> Driess, D., Xia, F., Sajjadi, M. S. M., Lynch, C., Chowdhery, A.,
+loss and online sampling, 2018.
+[3] Driess, D., Xia, F., Sajjadi, M. S. M., Lynch, C., Chowdhery, A.,
 Ichter, B., Wahid, A., Tompson, J., Vuong, Q., Yu, T., Huang,
-6W., Chebotar, Y., Sermanet, P., Duckworth, D., Levine, S., Vanhoucke, V., Hausman, K., Toussaint, M., Greff, K., Zeng, A.,
+6
+W., Chebotar, Y., Sermanet, P., Duckworth, D., Levine, S., Van-
+houcke, V., Hausman, K., Toussaint, M., Greff, K., Zeng, A.,
 Mordatch, I., and Florence, P. Palm-e: An embodied multimodal
-language model, 2023.<br>
+language model, 2023.
+[4] Guillaume Jaume, Hazim Kemal Ekenel, J.-P. T. Funsd: A dataset
+for form understanding in noisy scanned documents. In Accepted to ICDAR-
+OST (2019).
+[5] Le, Q. V., and Mikolov, T. Distributed representations of sentences
+and documents, 2014.
+[6] OpenAI. Gpt-4 technical report, 2023.
+[7] Pramanik, S., Mujumdar, S., and Patel, H. Towards a multi-modal,
+multi-task learning based pre-training framework for document representa-
+tion learning, 2022.
+[8] Tian, Z., Huang, W., He, T., He, P., and Qiao, Y. Detecting text
+in natural image with connectionist text proposal network, 2016.
+[9] Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L.,
+Gomez, A. N., Kaiser, L., and Polosukhin, I. Attention is all you
+need, 2017.
+[10] Wu, C., Yin, S., Qi, W., Wang, X., Tang, Z., and Duan, N. Visual
+chatgpt: Talking, drawing and editing with visual foundation models, 2023.
+[11] Xu, Y., Li, M., Cui, L., Huang, S., Wei, F., and Zhou, M. Lay-
+outLM: Pre-training of text and layout for document image understand-
+ing. In Proceedings of the 26th ACM SIGKDD International Conference
+on Knowledge Discovery &amp Data Mining (aug 2020), ACM.
